@@ -3,6 +3,8 @@ import Header from "./components/Header";
 import MainContent from "./components/MainContent";
 import Footer from "./components/Footer";
 import WelcomeMessage from "./components/WelcomeMessage";
+import ProfilePage from "./components/ProfilePage";
+import UserContext from "./UserContext";
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
@@ -10,9 +12,12 @@ import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
+  
+  // User data to be shared via Context API
+  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
 
   return (
-    <>
+    <UserContext.Provider value={userData}>
       <Header />
       <MainContent />
       <Footer />
@@ -38,7 +43,13 @@ function App() {
       </p>
       <WelcomeMessage />
       <UserProfile name="Alice" age={25} bio="Loves hiking and photography" />
-    </>
+      
+      {/* New section demonstrating Context API */}
+      <div style={{ marginTop: '30px', padding: '20px', backgroundColor: '#f0f0f0' }}>
+        <h2>Context API Demo</h2>
+        <ProfilePage />
+      </div>
+    </UserContext.Provider>
   );
 }
 
