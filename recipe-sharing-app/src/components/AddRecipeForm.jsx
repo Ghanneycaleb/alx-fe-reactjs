@@ -8,17 +8,17 @@
 
 //   const handleSubmit = (event) => {
 //     event.preventDefault();
-    
+
 //     if (!title.trim() || !description.trim()) {
 //       alert('Please fill in both fields');
 //       return;
 //     }
 
-//     addRecipe({ 
-//       title: title.trim(), 
-//       description: description.trim() 
+//     addRecipe({
+//       title: title.trim(),
+//       description: description.trim()
 //     });
-    
+
 //     setTitle('');
 //     setDescription('');
 //   };
@@ -46,33 +46,33 @@
 
 // export default AddRecipeForm;
 
-import { useState } from 'react';
-import { useRecipeStore } from '../recipeStore';
+import { useState } from "react";
+import { useRecipeStore } from "./recipeStore";
 
 const AddRecipeForm = () => {
-  const addRecipe = useRecipeStore(state => state.addRecipe);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const addRecipe = useRecipeStore((state) => state.addRecipe);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+
     if (!title.trim() || !description.trim()) {
-      alert('Please fill in both title and description');
+      alert("Please fill in both title and description");
       return;
     }
 
     setIsSubmitting(true);
-    
+
     // Simulate processing
     setTimeout(() => {
-      addRecipe({ 
-        title: title.trim(), 
-        description: description.trim() 
+      addRecipe({
+        title: title.trim(),
+        description: description.trim(),
       });
-      setTitle('');
-      setDescription('');
+      setTitle("");
+      setDescription("");
       setIsSubmitting(false);
     }, 300);
   };
@@ -92,7 +92,7 @@ const AddRecipeForm = () => {
             disabled={isSubmitting}
           />
         </div>
-        
+
         <div className="input-group">
           <label htmlFor="description">Description</label>
           <textarea
@@ -104,13 +104,13 @@ const AddRecipeForm = () => {
             disabled={isSubmitting}
           />
         </div>
-        
-        <button 
+
+        <button
           onClick={handleSubmit}
           disabled={isSubmitting}
           className="submit-btn"
         >
-          {isSubmitting ? 'Adding Recipe...' : 'Add Recipe'}
+          {isSubmitting ? "Adding Recipe..." : "Add Recipe"}
         </button>
       </div>
     </div>

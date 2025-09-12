@@ -23,7 +23,7 @@
 
 // export default RecipeList;
 
-import { useRecipeStore } from '../recipeStore';
+import { useRecipeStore } from "./recipeStore";
 
 const RecipeList = () => {
   const { recipes, deleteRecipe } = useRecipeStore();
@@ -40,13 +40,13 @@ const RecipeList = () => {
   return (
     <div className="recipe-list">
       <h2>Recipe Collection</h2>
-      {recipes.map(recipe => (
+      {recipes.map((recipe) => (
         <div key={recipe.id} className="recipe-card">
           <div className="recipe-content">
             <h3>{recipe.title}</h3>
             <p>{recipe.description}</p>
           </div>
-            <button onClick={() => deleteRecipe(recipe.id)}>Delete</button>
+          <button onClick={() => deleteRecipe(recipe.id)}>Delete</button>
           {/* <button
             onClick={() => deleteRecipe(recipe.id)}
             className="delete-btn"
