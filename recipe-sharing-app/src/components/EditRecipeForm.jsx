@@ -17,7 +17,8 @@ const EditRecipeForm = ({ recipe }) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     if (!formData.title.trim() || !formData.description.trim()) {
       alert('Please fill in title and description');
       return;
