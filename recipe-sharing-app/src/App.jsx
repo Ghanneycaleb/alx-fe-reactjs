@@ -1,72 +1,45 @@
-// import RecipeList from "./components/RecipeList";
-// import AddRecipeForm from "./components/AddRecipeForm";
-// import { useRecipeStore } from "./components/recipeStore";
-// import "./App.css";
-
-// function App() {
-//   const recipeCount = useRecipeStore((state) => state.recipes.length);
-
-//   return (
-//     <div className="app">
-//       <header className="app-header">
-//         <h1>Recipe Sharing App</h1>
-//         <p>{recipeCount} recipes in collection</p>
-//       </header>
-
-//       <main className="app-main">
-//         <div className="app-grid">
-//           <AddRecipeForm />
-//           <RecipeList />
-//         </div>
-//       </main>
-//     </div>
-//   );
-// }
-
-
-// export default App;
-import { useRecipeStore } from './components/recipeStore';
+import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
 import AddRecipeForm from './components/AddRecipeForm';
 import EditRecipeForm from './components/EditRecipeForm';
+import { useRecipeStore } from './components/recipeStore';
 import './App.css';
 
+const RecipeDetailsRoute = () => {
+  const { id } = useParams();
+  const recipeId = isNaN(Number(id)) ? id : Number(id);
+  return <RecipeDetails recipeId={recipeId} />;
+};
+
+const EditRecipeFormRoute = () => {
+  const { id } = useParams();
+  const recipeId = isNaN(Number(id)) ? id : Number(id);
+  const { getRecipeById } = useRecipeStore();
+  const recipe = getRecipeById(recipeId);
+  if (!recipe) return <div>Recipe not found</div>;
+  return <EditRecipeForm recipe={recipe} />;
+};
+
 function App() {
-  const { currentView, selectedRecipe } = useRecipeStore();
-
-  const renderCurrentView = () => {
-    switch (currentView) {
-      case 'details':
-        return selectedRecipe ? (
-          <RecipeDetails recipeId={selectedRecipe.id} />
-        ) : (
-          <div>Recipe not found</div>
-        );
-      case 'add':
-        return <AddRecipeForm />;
-      case 'edit':
-        return selectedRecipe ? (
-          <EditRecipeForm recipe={selectedRecipe} />
-        ) : (
-          <div>Recipe not found</div>
-        );
-      default:
-        return <RecipeList />;
-    }
-  };
-
   return (
-    <div className="app">
-      <header className="app-header">
-        <h1>Recipe Sharing App</h1>
-        <p>Share and discover amazing recipes</p>
-      </header>
-      
-      <main>
-        {renderCurrentView()}
-      </main>
-    </div>
+    <Router>
+      <div className="app">
+        <header className="app-header">
+          <h1>Recipe Sharing App</h1>
+          <p>Share and discover amazing recipes</p>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<RecipeList />} />
+            <Route path="/add" element={<AddRecipeForm />} />
+            <Route path="/recipes/:id" element={<RecipeDetailsRoute />} />
+            <Route path="/edit/:id" element={<EditRecipeFormRoute />} />
+            <Route path="*" element={<div>Not Found</div>} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
