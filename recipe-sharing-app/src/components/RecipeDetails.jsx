@@ -69,11 +69,13 @@
 //   );
 // };
 
+import { useNavigate } from 'react-router-dom';
 import { useRecipeStore } from '../components/recipeStore';
 import DeleteRecipeButton from './DeleteRecipeButton';
 
 const RecipeDetails = ({ recipeId }) => {
-  const { getRecipeById, setCurrentView, setSelectedRecipe } = useRecipeStore();
+  const { getRecipeById } = useRecipeStore();
+  const navigate = useNavigate();
   const recipe = getRecipeById(recipeId);
 
   if (!recipe) {
@@ -81,7 +83,7 @@ const RecipeDetails = ({ recipeId }) => {
       <div className="recipe-details error">
         <h2>Recipe Not Found</h2>
         <p>The recipe you're looking for doesn't exist.</p>
-        <button onClick={() => setCurrentView('list')} className="back-btn">
+        <button onClick={() => navigate('/')} className="back-btn">
           ← Back to Recipes
         </button>
       </div>
@@ -89,14 +91,13 @@ const RecipeDetails = ({ recipeId }) => {
   }
 
   const handleEdit = () => {
-    setSelectedRecipe(recipe);
-    setCurrentView('edit');
+    navigate(`/edit/${recipe.id}`);
   };
 
   return (
     <div className="recipe-details">
       <div className="recipe-header">
-        <button onClick={() => setCurrentView('list')} className="back-btn">
+        <button onClick={() => navigate('/')} className="back-btn">
           ← Back to Recipes
         </button>
         <div className="recipe-actions">

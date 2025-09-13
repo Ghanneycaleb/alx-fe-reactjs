@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { useRecipeStore } from '../components/recipeStore';
 
 const DeleteRecipeButton = ({ recipeId }) => {
-  const { deleteRecipe, setCurrentView } = useRecipeStore();
+  const { deleteRecipe } = useRecipeStore();
+  const navigate = useNavigate();
   const [showConfirm, setShowConfirm] = useState(false);
 
   const handleDelete = () => {
     deleteRecipe(recipeId);
-    setCurrentView('list');
+    navigate('/');
     setShowConfirm(false);
   };
 

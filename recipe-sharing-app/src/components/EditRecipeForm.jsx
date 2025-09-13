@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useRecipeStore } from '../components/recipeStore';
 
 const EditRecipeForm = ({ recipe }) => {
-  const { updateRecipe, setCurrentView } = useRecipeStore();
+  const { updateRecipe } = useRecipeStore();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: recipe?.title || '',
     description: recipe?.description || '',
@@ -34,13 +36,14 @@ const EditRecipeForm = ({ recipe }) => {
       };
       
       updateRecipe(recipe.id, updatedRecipe);
-      setCurrentView('details');
       setIsSubmitting(false);
+      navigate(`/recipes/${recipe.id}`);
     }, 300);
   };
 
-  const handleCancel = () => {
-    setCurrentView('details');
+  const handleCancel = (event) => {
+    event.preventDefault?.();
+    navigate(`/recipes/${recipe.id}`);
   };
 
   return (
