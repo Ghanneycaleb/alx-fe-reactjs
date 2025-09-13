@@ -69,6 +69,7 @@
 //   );
 // };
 
+import FavoriteButton from './FavoriteButton';
 import { useNavigate } from 'react-router-dom';
 import { useRecipeStore } from '../components/recipeStore';
 import DeleteRecipeButton from './DeleteRecipeButton';
@@ -105,6 +106,8 @@ const RecipeDetails = ({ recipeId }) => {
             ✏️ Edit
           </button>
           <DeleteRecipeButton recipeId={recipe.id} />
+          {/* 🆕 ADD THIS: */}
+  <FavoriteButton recipeId={recipe.id} />
         </div>
       </div>
       

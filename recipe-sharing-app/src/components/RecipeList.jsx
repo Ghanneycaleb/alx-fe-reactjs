@@ -126,12 +126,13 @@
 // };
 
 // export default RecipeList;
-
+import FavoriteButton from './FavoriteButton';
 import { Link } from 'react-router-dom';
 import { useRecipeStore } from '../components/recipeStore';
 import SearchBar from './SearchBar';
 import FilterPanel from './FilterPanel';
 import SearchResults from './SearchResults';
+// import FavoriteButton from './FavoriteButton';
 
 const RecipeList = () => {
   const { getFilteredRecipes } = useRecipeStore();
@@ -189,6 +190,8 @@ const RecipeList = () => {
                 >
                   View Details
                 </Link>
+                 {/* 🆕 ADD THIS: */}
+  <FavoriteButton recipeId={recipe.id} />
               </div>
             </div>
           ))}
