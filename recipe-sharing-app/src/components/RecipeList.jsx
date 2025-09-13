@@ -127,7 +127,7 @@
 
 // export default RecipeList;
 
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useRecipeStore } from '../components/recipeStore';
 import SearchBar from './SearchBar';
 import FilterPanel from './FilterPanel';
@@ -135,20 +135,16 @@ import SearchResults from './SearchResults';
 
 const RecipeList = () => {
   const { getFilteredRecipes } = useRecipeStore();
-  const navigate = useNavigate();
   const filteredRecipes = getFilteredRecipes();
 
-  const handleViewDetails = (recipe) => {
-    navigate(`/recipes/${recipe.id}`);
-  };
-
+  
   return (
     <div className="recipe-list">
       <div className="list-header">
         <h2>Recipe Collection</h2>
-        <button onClick={() => navigate('/add')} className="add-recipe-btn">
+        <Link to="/add" className="add-recipe-btn">
           + Add Recipe
-        </button>
+        </Link>
       </div>
 
       {/* Search Bar */}
@@ -187,12 +183,12 @@ const RecipeList = () => {
                 </div>
               </div>
               <div className="recipe-card-actions">
-                <button 
-                  onClick={() => handleViewDetails(recipe)}
+                <Link 
+                  to={`/recipes/${recipe.id}`}
                   className="view-details-btn"
                 >
                   View Details
-                </button>
+                </Link>
               </div>
             </div>
           ))}
