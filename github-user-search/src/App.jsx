@@ -34,30 +34,30 @@
 
 // export default App
 
-import { useState } from 'react';
-import Search from './components/Search';
-import SearchResults from './components/SearchResults';
-import { githubService } from './services/githubApi';
-import './App.css';
+import { useState } from "react";
+import Search from "./components/Search";
+import SearchResults from "./components/SearchResults";
+import { githubService } from "./services/githubService.js";
+import "./App.css";
 
 function App() {
   const [searchResults, setSearchResults] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = async (username) => {
     setLoading(true);
     setError(null);
     setSearchTerm(username);
-    
+
     try {
       const results = await githubService.searchUsers(username);
       setSearchResults(results);
     } catch (err) {
       setError(
-        err.response?.data?.message || 
-        'Failed to search users. Please try again.'
+        err.response?.data?.message ||
+          "Failed to search users. Please try again."
       );
       setSearchResults(null);
     } finally {
@@ -69,12 +69,12 @@ function App() {
     try {
       // Get detailed user information
       const userDetails = await githubService.getUserDetails(user.login);
-      console.log('User details:', userDetails);
-      
+      console.log("User details:", userDetails);
+
       // You can implement a modal or navigation to user detail page here
       // For now, we'll just log the details
     } catch (err) {
-      console.error('Failed to fetch user details:', err);
+      console.error("Failed to fetch user details:", err);
     }
   };
 
@@ -82,7 +82,7 @@ function App() {
     <div className="App">
       <main className="main-content">
         <Search onSearch={handleSearch} loading={loading} />
-        <SearchResults 
+        <SearchResults
           results={searchResults}
           loading={loading}
           error={error}

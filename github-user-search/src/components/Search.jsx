@@ -27,16 +27,16 @@
 //             className="search-input"
 //             disabled={loading}
 //           />
-//           <button 
-//             type="submit" 
+//           <button
+//             type="submit"
 //             disabled={loading || !username.trim()}
 //             className="search-button"
 //           >
 //             {loading ? 'Searching...' : 'Search'}
 //           </button>
 //           {username && (
-//             <button 
-//               type="button" 
+//             <button
+//               type="button"
 //               onClick={handleClear}
 //               className="clear-button"
 //               disabled={loading}
@@ -51,11 +51,11 @@
 // };
 
 // export default Search;
-import { useState } from 'react';
-import { fetchUserData } from '../services/githubApi';
+import { useState } from "react";
+import { fetchUserData } from "../services/githubService.js";
 
 const Search = () => {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("");
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -66,7 +66,7 @@ const Search = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!username.trim()) return;
 
     setLoading(true);
@@ -87,7 +87,7 @@ const Search = () => {
   return (
     <div className="search-container">
       <h1>GitHub User Search</h1>
-      
+
       <form onSubmit={handleFormSubmit} className="search-form">
         <input
           type="text"
@@ -103,18 +103,16 @@ const Search = () => {
 
       {/* Conditional rendering based on API call state */}
       {loading && <div className="loading-message">Loading...</div>}
-      
+
       {error && (
-        <div className="error-message">
-          Looks like we cant find the user
-        </div>
+        <div className="error-message">Looks like we cant find the user</div>
       )}
 
       {userData && !loading && !error && (
         <div className="user-info">
           <div className="user-avatar">
-            <img 
-              src={userData.avatar_url} 
+            <img
+              src={userData.avatar_url}
               alt={`${userData.login}'s avatar`}
               width="100"
               height="100"
@@ -123,9 +121,9 @@ const Search = () => {
           <div className="user-details">
             <h2>{userData.name || userData.login}</h2>
             <p>@{userData.login}</p>
-            <a 
-              href={userData.html_url} 
-              target="_blank" 
+            <a
+              href={userData.html_url}
+              target="_blank"
               rel="noopener noreferrer"
               className="profile-link"
             >
