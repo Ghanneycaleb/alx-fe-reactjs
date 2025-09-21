@@ -5,10 +5,10 @@ const BASE_URL = import.meta.env.VITE_GITHUB_API_URL || 'https://api.github.com'
 const API_KEY = import.meta.env.VITE_GITHUB_API_KEY;
 const PER_PAGE = import.meta.env.VITE_GITHUB_API_PER_PAGE || 30;
 
-// Create axios instance with default config
+// In your githubApi.js file, update the axios instance creation:
 const githubApi = axios.create({
   baseURL: BASE_URL,
-  timeout: 10000, // 10 second timeout
+  timeout: 30000, // Increase timeout to 30 seconds
   headers: {
     'Accept': 'application/vnd.github.v3+json',
     'Content-Type': 'application/json',
@@ -79,4 +79,29 @@ export const githubService = {
   }
 };
 
+// Add the required fetchUserData function for the task
+// Update your fetchUserData function with better error handling
+export const fetchUserData = async (username) => {
+  try {
+    const response = await githubApi.get(`/users/${username}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    
+    // Handle specific error types
+    if (error.code === 'ECONNABORTED') {
+      throw new Error('Request timeout - please check your internet connection and try again');
+    } else if (error.response?.status === 404) {
+      throw new Error('User not found');
+    } else if (error.response?.status === 401) {
+      throw new Error('API authentication failed');
+    } else if (error.response?.status === 403) {
+      throw new Error('API rate limit exceeded');
+    } else if (!error.response) {
+      throw new Error('Network error - please check your internet connection');
+    } else {
+      throw new Error('Failed to fetch user data');
+    }
+  }
+};
 export default githubService;
