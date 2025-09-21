@@ -23,21 +23,42 @@ if (API_KEY) {
 // API service functions
 export const githubService = {
   // Search for users
-  searchUsers: async (username, page = 1) => {
-    try {
-      const response = await githubApi.get('/search/users', {
-        params: {
-          q: username,
-          page: page,
-          per_page: PER_PAGE
-        }
-      });
-      return response.data;
-    } catch (error) {
-      console.error('Error searching users:', error);
-      throw error;
-    }
-  },
+  // searchUsers: async (username, page = 1) => {
+  //   try {
+  //     const response = await githubApi.get('/search/users', {
+  //       params: {
+  //         q: username,
+  //         page: page,
+  //         per_page: PER_PAGE
+  //       }
+  //     });
+  //     return response.data;
+  //   } catch (error) {
+  //     console.error('Error searching users:', error);
+  //     throw error;
+  //   }
+  // },
+
+  searchUsers: async ({ username = "", location = "", minRepos = 0, page = 1 }) => {
+  try {
+    let queryParts = [];
+
+    if (username) queryParts.push(encodeURIComponent(username));
+    if (location) queryParts.push(`location:${encodeURIComponent(location)}`);
+    if (minRepos) queryParts.push(`repos:>=${minRepos}`);
+
+    const query = queryParts.join("+");
+
+    const response = await githubApi.get("/search/users", {
+      params: { q: query, page, per_page: PER_PAGE }
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error searching users:", error);
+    throw error;
+  }
+},
+
 
   // Get detailed user information
   getUserDetails: async (username) => {
