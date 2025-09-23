@@ -42,7 +42,7 @@
 }
  */
 
- /* App.css */
+/* App.css */
 /* Basic styles for GitHub User Search App */
 
 /* Basic styles for GitHub User Search App */
@@ -54,9 +54,12 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  /* font-family: 'Arial', sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #9e92aa 100%);
-  color: black;
+  color: white; */
+  background: url("https://images.unsplash.com/photo-1503264116251-35a269479413?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80")
+    no-repeat center center fixed;
+  background-size: cover;
   line-height: 1.6;
   min-height: 100vh;
   justify-content: center;
@@ -115,22 +118,22 @@ body {
 /* Search Form */
 .search-form {
   display: flex;
-  flex-direction: column;   /* stack inputs vertically */
-  gap: 1rem;                /* equal vertical spacing between inputs */
-  align-items: center;      /* center align inputs/buttons */
+  flex-direction: column; /* stack inputs vertically */
+  gap: 1rem; /* equal vertical spacing between inputs */
+  align-items: center; /* center align inputs/buttons */
 }
 
 .search-input {
+  color: black;
   width: 100%;
-  max-width: 300px;         /* keep consistent width */
-  margin-right: 0;          /* remove inline spacing */
+  max-width: 300px; /* keep consistent width */
+  margin-right: 0; /* remove inline spacing */
 }
 
 .search-button {
-  margin-top: 0.5rem;       /* space from last input */
-  width: auto;              /* keep button natural size */
+  margin-top: 0.5rem; /* space from last input */
+  width: auto; /* keep button natural size */
 }
-
 
 .search-input:focus {
   border-color: #667eea;
@@ -141,8 +144,7 @@ body {
 .search-button {
   padding: 16px 24px;
   font-size: 16px;
-  background: linear-gradient(135deg, #667eea 0%,  #1a2555
-  100%);
+  background: linear-gradient(135deg, #66d0ea 0%, #1a2555 100%);
   color: white;
   border: none;
   border-radius: 25px;
@@ -150,7 +152,7 @@ body {
   transition: all 0.3s ease;
   font-weight: 600;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-  gap:10px;
+  gap: 10px;
 }
 
 .search-button:hover {
@@ -158,6 +160,17 @@ body {
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
 }
 
+.no-search {
+  text-align: center;
+  color: black;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin-top: 15px;
+}
 /* Loading Message */
 .loading-message {
   font-size: 18px;
@@ -186,7 +199,11 @@ body {
   gap: 2rem;
   margin-top: 2rem;
   padding: 2rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.85)
+  );
   backdrop-filter: blur(10px);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -249,25 +266,25 @@ body {
   .App {
     padding: 1rem;
   }
-  
+
   .search-container {
     padding: 2rem 1.5rem;
   }
-  
+
   .search-container h1 {
     font-size: 2rem;
   }
-  
+
   .search-input {
     width: 100%;
     margin-right: 0;
     margin-bottom: 10px;
   }
-  
+
   .search-button {
     width: 100%;
   }
-  
+
   .user-info {
     flex-direction: column;
     text-align: center;

@@ -225,7 +225,7 @@ const SearchResults = ({
     return (
       <div className="search-results">
         <div className="no-search">
-          <h3>Search for GitHub Users</h3>
+          <strong>Search for GitHub Users</strong>
           <p>Enter username, location, or repo count to explore profiles.</p>
         </div>
       </div>
