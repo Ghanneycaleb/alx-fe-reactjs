@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Jollof Rice",
+    "summary": "A rich and spicy one-pot rice dish cooked in tomato stew, often served with fried plantain and grilled chicken.",
+    "image": "https://eatwellabi.com/wp-content/uploads/2022/11/Jollof-rice-16-720x560.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Banku and Tilapia",
+    "summary": "A Ghanaian favorite made from fermented corn and cassava dough, served with grilled tilapia and spicy pepper sauce.",
+    "image": "https://africa.proudmeals.com/wp-content/uploads/2025/01/IMG-20250128-WA0010.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Waakye",
+    "summary": "A flavorful rice and beans dish cooked with millet leaves, enjoyed with stew, spaghetti, and gari.",
+    "image": "https://eatwellabi.com/wp-content/uploads/2021/09/Waakye-13-720x538.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Fufu and Light Soup",
+    "summary": "Pounded cassava and plantain served with spicy light soup and meat or fish — a traditional Sunday delight.",
+    "image": "https://myplanetfood.com/wp-content/uploads/2025/05/Fufuwith-Light-Soup-783x620.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Kelewele",
+    "summary": "Spicy fried plantain seasoned with ginger, pepper, and cloves — a perfect street snack or side dish.",
+    "image": "https://www.theduchezkitchen.com/wp-content/uploads/2023/05/plantain-recipes-18-720x831.jpg"
+  }
+]

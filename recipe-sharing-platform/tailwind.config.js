@@ -1,3 +1,5 @@
+import lineClamp from '@tailwindcss/line-clamp';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -6,7 +8,13 @@ export default {
     "./public/index.html"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        pink: {
+          600: '#ec4899',
+        },
+      },
+    },
   },
-  plugins: [],
+  plugins: [lineClamp],
 };
