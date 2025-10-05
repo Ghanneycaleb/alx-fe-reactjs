@@ -4,9 +4,8 @@ const AddRecipeForm = () => {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [steps, setSteps] = useState("");
-  const [errors, setErrors] = useState({}); // ✅ errors state + setter
+  const [errors, setErrors] = useState({});
 
-  // validate function required by the check
   const validate = () => {
     const newErrors = {};
 
@@ -30,13 +29,13 @@ const AddRecipeForm = () => {
       newErrors.steps = "Please provide preparation steps.";
     }
 
-    setErrors(newErrors); // ✅ setErrors used here
+    setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!validate()) return; // stop if validation fails
+    if (!validate()) return;
 
     const newRecipe = {
       id: Date.now(),
@@ -48,12 +47,10 @@ const AddRecipeForm = () => {
       steps: steps.trim(),
     };
 
-    // Persist to localStorage (simple local "backend" for demo)
     const stored = JSON.parse(localStorage.getItem("recipes") || "[]");
     stored.push(newRecipe);
     localStorage.setItem("recipes", JSON.stringify(stored));
 
-    // feedback and reset
     alert("Recipe submitted!");
     setTitle("");
     setIngredients("");
@@ -61,7 +58,6 @@ const AddRecipeForm = () => {
     setErrors({});
   };
 
-  // helpers to clear a field error while user types
   const clearError = (field) => {
     setErrors((prev) => {
       if (!prev[field]) return prev;
@@ -75,13 +71,17 @@ const AddRecipeForm = () => {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <form
         onSubmit={handleSubmit}
-        className="bg-white rounded-2xl shadow-lg p-6 w-full max-w-lg space-y-5"
+        className="bg-white rounded-2xl shadow-lg p-6 w-full max-w-lg md:max-w-2xl space-y-5"
       >
-        <h2 className="text-2xl font-bold text-center text-pink-600">Add a New Recipe</h2>
+        <h2 className="text-2xl font-bold text-center text-pink-600">
+          Add a New Recipe
+        </h2>
 
         {/* Title */}
         <div>
-          <label className="block text-gray-700 mb-1 font-medium">Recipe Title</label>
+          <label className="block text-gray-700 mb-1 font-medium">
+            Recipe Title
+          </label>
           <input
             value={title}
             onChange={(e) => {
@@ -91,17 +91,25 @@ const AddRecipeForm = () => {
             type="text"
             placeholder="e.g. Jollof Rice"
             className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 ${
-              errors.title ? "border-red-400 focus:ring-red-300" : "border-gray-300 focus:ring-pink-400"
+              errors.title
+                ? "border-red-400 focus:ring-red-300"
+                : "border-gray-300 focus:ring-pink-400"
             }`}
             aria-invalid={errors.title ? "true" : "false"}
             aria-describedby={errors.title ? "title-error" : undefined}
           />
-          {errors.title && <p id="title-error" className="text-red-500 text-sm mt-1">{errors.title}</p>}
+          {errors.title && (
+            <p id="title-error" className="text-red-500 text-sm mt-1">
+              {errors.title}
+            </p>
+          )}
         </div>
 
         {/* Ingredients */}
-        <div>
-          <label className="block text-gray-700 mb-1 font-medium">Ingredients (comma separated)</label>
+        <div className="md:grid md:grid-cols-1">
+          <label className="block text-gray-700 mb-1 font-medium">
+            Ingredients (comma separated)
+          </label>
           <textarea
             value={ingredients}
             onChange={(e) => {
@@ -111,17 +119,27 @@ const AddRecipeForm = () => {
             rows="3"
             placeholder="e.g. rice, tomato paste, onion"
             className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 resize-none ${
-              errors.ingredients ? "border-red-400 focus:ring-red-300" : "border-gray-300 focus:ring-pink-400"
+              errors.ingredients
+                ? "border-red-400 focus:ring-red-300"
+                : "border-gray-300 focus:ring-pink-400"
             }`}
             aria-invalid={errors.ingredients ? "true" : "false"}
-            aria-describedby={errors.ingredients ? "ingredients-error" : undefined}
+            aria-describedby={
+              errors.ingredients ? "ingredients-error" : undefined
+            }
           />
-          {errors.ingredients && <p id="ingredients-error" className="text-red-500 text-sm mt-1">{errors.ingredients}</p>}
+          {errors.ingredients && (
+            <p id="ingredients-error" className="text-red-500 text-sm mt-1">
+              {errors.ingredients}
+            </p>
+          )}
         </div>
 
         {/* Steps */}
         <div>
-          <label className="block text-gray-700 mb-1 font-medium">Preparation Steps</label>
+          <label className="block text-gray-700 mb-1 font-medium">
+            Preparation Steps
+          </label>
           <textarea
             value={steps}
             onChange={(e) => {
@@ -131,17 +149,23 @@ const AddRecipeForm = () => {
             rows="5"
             placeholder="Describe the preparation steps..."
             className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 resize-y ${
-              errors.steps ? "border-red-400 focus:ring-red-300" : "border-gray-300 focus:ring-pink-400"
+              errors.steps
+                ? "border-red-400 focus:ring-red-300"
+                : "border-gray-300 focus:ring-pink-400"
             }`}
             aria-invalid={errors.steps ? "true" : "false"}
             aria-describedby={errors.steps ? "steps-error" : undefined}
           />
-          {errors.steps && <p id="steps-error" className="text-red-500 text-sm mt-1">{errors.steps}</p>}
+          {errors.steps && (
+            <p id="steps-error" className="text-red-500 text-sm mt-1">
+              {errors.steps}
+            </p>
+          )}
         </div>
 
         <button
           type="submit"
-          className="w-full bg-pink-600 text-white py-2 rounded-lg hover:bg-pink-700 transition duration-200"
+          className="w-full bg-pink-600 text-white py-2 rounded-lg hover:bg-pink-700 transition duration-200 md:w-1/2 md:mx-auto"
         >
           Submit Recipe
         </button>
