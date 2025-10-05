@@ -3,30 +3,104 @@
     "id": 1,
     "title": "Jollof Rice",
     "summary": "A rich and spicy one-pot rice dish cooked in tomato stew, often served with fried plantain and grilled chicken.",
-    "image": "https://eatwellabi.com/wp-content/uploads/2022/11/Jollof-rice-16-720x560.jpg"
+    "image": "https://eatwellabi.com/wp-content/uploads/2022/11/Jollof-rice-16-720x560.jpg",
+    "ingredients": [
+      "2 cups long-grain rice",
+      "1 can tomato paste",
+      "3 fresh tomatoes, blended",
+      "1 onion, chopped",
+      "2 tablespoons vegetable oil",
+      "1 teaspoon curry powder",
+      "1 teaspoon thyme",
+      "Salt to taste"
+    ],
+    "instructions": [
+      "Rinse the rice and set aside.",
+      "Blend tomatoes, onion, and pepper to make the base stew.",
+      "Heat oil in a pan, add tomato paste, and fry for 5 minutes.",
+      "Add blended tomato mixture and spices, then cook until thick.",
+      "Stir in rice and add water as needed.",
+      "Cover and simmer until rice is cooked and fluffy."
+    ]
   },
   {
     "id": 2,
     "title": "Banku and Tilapia",
     "summary": "A Ghanaian favorite made from fermented corn and cassava dough, served with grilled tilapia and spicy pepper sauce.",
-    "image": "https://africa.proudmeals.com/wp-content/uploads/2025/01/IMG-20250128-WA0010.jpg"
+    "image": "https://africa.proudmeals.com/wp-content/uploads/2025/01/IMG-20250128-WA0010.jpg",
+    "ingredients": [
+      "2 cups corn dough",
+      "1 cup cassava dough",
+      "1 fresh tilapia",
+      "2 tomatoes",
+      "1 onion",
+      "2 chili peppers",
+      "Salt to taste"
+    ],
+    "instructions": [
+      "Mix corn and cassava dough with water and cook while stirring until smooth.",
+      "Grill seasoned tilapia until golden brown.",
+      "Blend tomatoes, onions, and chili to make pepper sauce.",
+      "Serve banku with tilapia and pepper sauce."
+    ]
   },
   {
     "id": 3,
     "title": "Waakye",
     "summary": "A flavorful rice and beans dish cooked with millet leaves, enjoyed with stew, spaghetti, and gari.",
-    "image": "https://eatwellabi.com/wp-content/uploads/2021/09/Waakye-13-720x538.jpg"
+    "image": "https://eatwellabi.com/wp-content/uploads/2021/09/Waakye-13-720x538.jpg",
+    "ingredients": [
+      "1 cup black-eyed peas",
+      "2 cups rice",
+      "Millet leaves (optional)",
+      "1 teaspoon baking soda",
+      "Salt to taste"
+    ],
+    "instructions": [
+      "Boil beans with millet leaves until half cooked.",
+      "Add rice and baking soda, then cook together until soft.",
+      "Remove millet leaves and serve with stew, spaghetti, or gari."
+    ]
   },
   {
     "id": 4,
     "title": "Fufu and Light Soup",
     "summary": "Pounded cassava and plantain served with spicy light soup and meat or fish — a traditional Sunday delight.",
-    "image": "https://myplanetfood.com/wp-content/uploads/2025/05/Fufuwith-Light-Soup-783x620.jpg"
+    "image": "https://myplanetfood.com/wp-content/uploads/2025/05/Fufuwith-Light-Soup-783x620.jpg",
+    "ingredients": [
+      "2 cassavas",
+      "2 plantains",
+      "1 pound goat meat or fish",
+      "3 tomatoes",
+      "1 onion",
+      "2 chili peppers",
+      "Salt to taste"
+    ],
+    "instructions": [
+      "Boil cassava and plantain until soft, then pound together until smooth.",
+      "Blend tomatoes, onion, and pepper for soup base.",
+      "Cook meat or fish with seasoning, add blended mixture, and simmer until done.",
+      "Serve hot with fufu."
+    ]
   },
   {
     "id": 5,
     "title": "Kelewele",
     "summary": "Spicy fried plantain seasoned with ginger, pepper, and cloves — a perfect street snack or side dish.",
-    "image": "https://www.theduchezkitchen.com/wp-content/uploads/2023/05/plantain-recipes-18-720x831.jpg"
+    "image": "https://www.theduchezkitchen.com/wp-content/uploads/2023/05/plantain-recipes-18-720x831.jpg",
+    "ingredients": [
+      "3 ripe plantains",
+      "1 teaspoon grated ginger",
+      "1 teaspoon cayenne pepper",
+      "1/2 teaspoon ground cloves",
+      "Salt to taste",
+      "Vegetable oil for frying"
+    ],
+    "instructions": [
+      "Peel and dice the plantains into bite-sized pieces.",
+      "Mix spices and coat the plantain pieces evenly.",
+      "Heat oil and fry until golden brown.",
+      "Serve hot as a snack or side dish."
+    ]
   }
 ]
