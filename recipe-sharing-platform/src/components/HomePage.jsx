@@ -15,6 +15,15 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-6xl mx-auto">
+        <div className="flex justify-end mb-6">
+  <Link
+    to="/add"
+    className="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition duration-200"
+  >
+    + Add Recipe
+  </Link>
+</div>
+
         <h1 className="text-3xl font-bold text-center text-pink-600 mb-8">
           Recipe Sharing Platform
         </h1>
