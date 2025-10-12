@@ -1,0 +1,132 @@
+/* ==== GLOBAL STYLES ==== */
+:root {
+  --primary-color: #ff007f; /* hot pink accent */
+  --primary-hover: #e60073;
+  --text-dark: #333;
+  --text-light: #555;
+  --bg-light: #f5f7fa;
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* ==== NAVIGATION BAR ==== */
+nav {
+  background-color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav h1 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--primary-color);
+}
+
+/* ==== PAGE CONTAINERS ==== */
+.container {
+  max-width: 800px;
+  margin: 3rem auto;
+  background-color: #fff;
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ==== PAGE HEADINGS ==== */
+.container h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* ==== BUTTONS ==== */
+button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* ==== PROFILE SECTIONS ==== */
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.profile-section h3 {
+  color: var(--text-dark);
+}
+
+/* ==== BLOG POST PAGE ==== */
+.blog-post {
+  background-color: white;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.blog-post h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+}
+
+.blog-post p {
+  color: var(--text-light);
+}
+
+/* ==== 404 PAGE ==== */
+.error-page {
+  text-align: center;
+  padding: 4rem 0;
+  color: var(--text-light);
+}
