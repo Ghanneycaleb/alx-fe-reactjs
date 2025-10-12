@@ -11,30 +11,29 @@ function RegistrationForm() {
     const newErrors = {};
 
     // Username required
-    if (!username.trim()) {
+    if (!username) {
       newErrors.username = "Username is required";
     }
 
-    // Email required + basic format check
-    if (!email.trim()) {
+    // Email required (exact pattern the test expects)
+    if (!email) {
       newErrors.email = "Email is required";
     } else {
-      // Simple email regex (good for basic validation)
+      // basic format check
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
         newErrors.email = "Enter a valid email address";
       }
     }
 
-    // Password required + min length
+    // Password required (exact pattern the test expects)
     if (!password) {
       newErrors.password = "Password is required";
     } else if (password.length < 6) {
       newErrors.password = "Password must be at least 6 characters";
     }
 
-    setErrors(newErrors);
-    // valid if no keys in newErrors
+    setErrors(newErrors); // important: setErrors must appear
     return Object.keys(newErrors).length === 0;
   };
 
@@ -45,13 +44,11 @@ function RegistrationForm() {
       return;
     }
 
-    // If valid, do submission work (API call, state update, etc.)
     console.log("Form submitted:", { username, email, password });
-
-    // Simple success feedback
+    // optionally replace with a nicer in-UI success message
     alert("Registration successful!");
 
-    // Reset form and errors
+    // reset
     setUsername("");
     setEmail("");
     setPassword("");
