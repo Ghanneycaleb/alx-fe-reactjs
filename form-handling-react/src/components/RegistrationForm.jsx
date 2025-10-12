@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../index.css"; // Use the global styles
 
 function RegistrationForm() {
   const [formData, setFormData] = useState({
@@ -7,68 +8,64 @@ function RegistrationForm() {
     password: "",
   });
 
-  const [error, setError] = useState("");
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!formData.username || !formData.email || !formData.password) {
-      setError("All fields are required.");
+      alert("Please fill in all fields!");
       return;
     }
 
-    setError("");
-    console.log("Form submitted successfully:", formData);
+    console.log("Form submitted:", formData);
     alert("Registration successful!");
     setFormData({ username: "", email: "", password: "" });
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "1rem",
-        maxWidth: "400px",
-        margin: "2rem auto",
-      }}
-    >
-      <h2>User Registration</h2>
+    <div className="form-container">
+      <h2>User Registration (Controlled)</h2>
+      <form onSubmit={handleSubmit} className="form">
+        <div className="form-group">
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={formData.username}
+            onChange={handleChange}
+          />
+        </div>
 
-      <input
-        type="text"
-        name="username"
-        placeholder="Username"
-        value={formData.username}
-        onChange={handleChange}
-      />
+        <div className="form-group">
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
 
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleChange}
-      />
+        <div className="form-group">
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+        </div>
 
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={formData.password}
-        onChange={handleChange}
-      />
-
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      <button type="submit">Register</button>
-    </form>
+        <button type="submit">Register</button>
+      </form>
+    </div>
   );
 }
 
