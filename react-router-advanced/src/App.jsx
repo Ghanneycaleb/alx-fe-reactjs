@@ -1,5 +1,5 @@
-import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/NavBar";
 
 import Home from "./components/Home";
 import About from "./components/About";
@@ -12,7 +12,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
       <Routes>
         {/* Public Routes */}
@@ -40,10 +40,14 @@ function App() {
         {/* 404 Fallback */}
         <Route
           path="*"
-          element={<h2 style={{ textAlign: "center", marginTop: "3rem" }}>404 - Page Not Found</h2>}
+          element={
+            <h2 style={{ textAlign: "center", marginTop: "3rem" }}>
+              404 - Page Not Found
+            </h2>
+          }
         />
       </Routes>
-    </>
+    </BrowserRouter>
   );
 }
 
