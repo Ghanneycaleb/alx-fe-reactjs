@@ -1,15 +1,17 @@
-// src/components/ProtectedRoute.jsx
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-function ProtectedRoute({ children }) {
-  const isAuthenticated = localStorage.getItem("auth") === "true";
-  const location = useLocation();
+// Simple mock authentication hook
+function useAuth() {
+  const user = localStorage.getItem("user"); // or your own logic
+  return { user };
+}
 
-  if (!isAuthenticated) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+export default function ProtectedRoute({ children }) {
+  const { user } = useAuth();
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
   }
 
   return children;
 }
-
-export default ProtectedRoute;
