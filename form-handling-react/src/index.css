@@ -1,4 +1,4 @@
-/* 🌸 Global Reset & Base */
+/*  Global Reset & Base */
 body {
   font-family: "Poppins", sans-serif;
   background: #f5f7fa;
@@ -6,7 +6,7 @@ body {
   padding: 0;
 }
 
-/* 🧱 Form Container */
+/*  Form Container */
 .form-container {
   max-width: 400px;
   margin: 4rem auto;
@@ -17,14 +17,14 @@ body {
   text-align: center;
 }
 
-/* 🩷 Header */
+/*  Header */
 .form-container h2 {
   margin-bottom: 1.5rem;
   color: #333;
   font-weight: 600;
 }
 
-/* 📄 Form Layout */
+/*  Form Layout */
 .form-body,
 .form {
   display: flex;
@@ -32,7 +32,7 @@ body {
   gap: 1rem;
 }
 
-/* ✏️ Input Fields */
+/*  Input Fields */
 .form-input,
 .form-group input {
   width: 100%;
@@ -50,7 +50,7 @@ body {
   box-shadow: 0 0 0 3px rgba(255, 0, 127, 0.15);
 }
 
-/* ⚠️ Error Message */
+/*  Error Message */
 .error-message {
   color: red;
   font-size: 0.875rem;
@@ -58,7 +58,7 @@ body {
   text-align: left;
 }
 
-/* 🔘 Button */
+/*  Button */
 .form-button,
 button {
   background-color: #ff007f; /* Hot pink */
